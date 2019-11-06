@@ -4,6 +4,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.work.Constraints;
+import androidx.work.Data;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
 
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
@@ -17,6 +21,8 @@ import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
+
+import java.util.concurrent.TimeUnit;
 
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
@@ -131,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void scheduleJobFirebaseToRoomDataUpdate() {
-        JobScheduler jobScheduler = (JobScheduler) getApplicationContext()
+       /* JobScheduler jobScheduler = (JobScheduler) getApplicationContext()
                 .getSystemService(JOB_SCHEDULER_SERVICE);
 
         ComponentName componentName = new ComponentName(this,
@@ -139,8 +145,28 @@ public class MainActivity extends AppCompatActivity {
         Log.e("Info ", "   " + SystemClock.elapsedRealtime());
         JobInfo jobInfo = new JobInfo.Builder(1, componentName)
                 .setPeriodic(1000)
-                /*.setRequiresCharging(true)*/
+                *//*.setRequiresCharging(true)*//*
                 .setPersisted(true).build();
-        jobScheduler.schedule(jobInfo);
+        jobScheduler.schedule(jobInfo);*/
+
+        Data data = new Data.Builder()
+                .putString(MyWorker.TASK_DESC, "The task data passed from MainActivity")
+                .build();
+
+        Constraints constraints = new Constraints.Builder()
+//                .setRequiresCharging(true)
+                .build();
+
+
+       PeriodicWorkRequest mPeriodicWorkRequest = new PeriodicWorkRequest.Builder(MyWorker.class,
+                15, TimeUnit.MINUTES)
+                .addTag("periodicWorkRequest")
+                .setInputData(data)
+                .setConstraints(constraints)
+                .build();
+        WorkManager.getInstance(MainActivity.this).enqueue(mPeriodicWorkRequest);
+
+
+
     }
 }

@@ -30,7 +30,7 @@ public class AddContactToFB {
 
         Log.e("Info ", "   " + SystemClock.elapsedRealtime());
 
-        Toast.makeText(mContext, "Service call", Toast.LENGTH_SHORT).show();
+        // Toast.makeText(mContext, "Service call", Toast.LENGTH_SHORT).show();
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         readContact();
@@ -51,7 +51,7 @@ public class AddContactToFB {
                 mSelectionArgs, CallLog.Calls.DATE + " DESC");
 
         StringBuilder sb = new StringBuilder();
-        SimpleDateFormat formatter = new SimpleDateFormat("d:MM:yyyy/h:mm:ss aa");
+        SimpleDateFormat formatter = new SimpleDateFormat("d:MM:yyyy/hh:mm:ss aa");
         if (c.getCount() > 0) {
             c.moveToFirst();
             do {
@@ -63,6 +63,8 @@ public class AddContactToFB {
                 long callDuration = c.getLong(c.getColumnIndex(CallLog.Calls.DURATION));
                 int callType = c.getInt(c.getColumnIndex(CallLog.Calls.TYPE));
 
+                if(callerNumber.length()==13)
+                    callerNumber=callerNumber.substring(3);
                 String callDetials[] = formatter.format(new Date(callDateandTime)).split("/");
 
 
@@ -78,10 +80,10 @@ public class AddContactToFB {
                 }
                 sb.append("\n NO -> " + callerNumber + "  Type ->  " + callTypeStr + "  Time -> " + callDetials[1] + "   Duration(s)  ->" + setDuration("" + callDuration));
 
-                IncomingCallPoojo poojo = new IncomingCallPoojo(callerNumber, callDetials[0], callDetials[1], setDuration("" + callDuration), callTypeStr);
+                IncomingCallPoojo poojo = new IncomingCallPoojo("" + callDateandTime, callerNumber, callDetials[0], callDetials[1], setDuration("" + callDuration), callTypeStr);
                 Gson gson = new Gson();
                 Log.e("info ", " Entery -> " + gson.toJson(poojo));
-                mDatabase.child(mContext.getString(R.string.getRoot)).child(poojo.date).child(poojo.time).setValue(poojo);
+                mDatabase.child(mContext.getString(R.string.getRoot)).child(poojo.date).child("" + callDateandTime).setValue(poojo);
             } while (c.moveToNext());
 
         }
@@ -106,13 +108,13 @@ public class AddContactToFB {
 
             String timeStr = "";
             if (numberOfHours > 0)
-                timeStr += numberOfHours + "h:";
+                timeStr += numberOfHours + "H:";
 
             if (numberOfMinutes > 0)
-                timeStr += numberOfMinutes + "m:";
+                timeStr += numberOfMinutes + "M:";
 
             if (numberOfSeconds > 0)
-                timeStr += numberOfSeconds + "s";
+                timeStr += numberOfSeconds + "S";
 
             return timeStr;
         } else
