@@ -30,7 +30,7 @@ public class AddContactToFB {
 
         Log.e("Info ", "   " + SystemClock.elapsedRealtime());
 
-
+        Toast.makeText(mContext, "Service call", Toast.LENGTH_SHORT).show();
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         readContact();
