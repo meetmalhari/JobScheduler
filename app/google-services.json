@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "525680280568",
+    "firebase_url": "https://getmycallrecords.firebaseio.com",
+    "project_id": "getmycallrecords",
+    "storage_bucket": "getmycallrecords.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:525680280568:android:ed0fb1c66d939d14fc0c0d",
+        "android_client_info": {
+          "package_name": "com.app4you.jobscheduler"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "525680280568-pgc25nd80mvt8gnfrkhd91jlo0vc0lbi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACuM9OICTEM3dQnxBO3SAaap1z2HaeJAA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "525680280568-pgc25nd80mvt8gnfrkhd91jlo0vc0lbi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:525680280568:android:dace559001f52cbcfc0c0d",
+        "android_client_info": {
+          "package_name": "com.app4you.mycall"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "525680280568-pgc25nd80mvt8gnfrkhd91jlo0vc0lbi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACuM9OICTEM3dQnxBO3SAaap1z2HaeJAA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "525680280568-pgc25nd80mvt8gnfrkhd91jlo0vc0lbi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:525680280568:android:abce7fe08684b61dfc0c0d",
+        "android_client_info": {
+          "package_name": "com.app4you.mycalldetails"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "525680280568-pgc25nd80mvt8gnfrkhd91jlo0vc0lbi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACuM9OICTEM3dQnxBO3SAaap1z2HaeJAA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "525680280568-pgc25nd80mvt8gnfrkhd91jlo0vc0lbi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
