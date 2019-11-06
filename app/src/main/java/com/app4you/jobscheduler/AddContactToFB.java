@@ -27,7 +27,7 @@ public class AddContactToFB {
         this.mContext = mContext;
 
         Log.e("Info ", " Service is Called");
-        Toast.makeText(mContext, "Service Called ", Toast.LENGTH_SHORT).show();
+
         Log.e("Info ", "   " + SystemClock.elapsedRealtime());
 
 
